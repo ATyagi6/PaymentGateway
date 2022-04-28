@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using PaymentGatewayDemo.API.Request;
 using PaymentGatewayDemo.Application.Commands;
 using System;
 using System.Collections.Generic;
@@ -7,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace PaymentGatewayDemo.API.Validators
 {
-    public class CreatePaymentCommandValidator: AbstractValidator<CreatePaymentCommand>
+    public class PaymentRequestValidator: AbstractValidator<PaymentRequest>
     {
-        public CreatePaymentCommandValidator()
+        public PaymentRequestValidator()
         {
             RuleFor(p => p.CreditCard).Cascade(CascadeMode.Stop).NotEmpty().WithMessage("{PropertyName} is required field")
                                                                 .CreditCard().WithMessage("{PropertyName} is not valid number");

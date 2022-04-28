@@ -21,39 +21,8 @@ namespace PaymentGatewayDemo.API.Middlewares
 
         public ErrorResponse HandleException(Exception exception)
         {
-            var error = exception switch
-            {
-                ValidationException validationException => HandleValidationException(validationException),
-                _ => HandleUnhandledExceptions(exception)
-            };
-
-            return error;
-        }
-
-        private ErrorResponse HandleValidationException(ValidationException validationException)
-        {
-            _logger.LogInformation(validationException, validationException.Message);
-
-            var error = new ErrorResponse
-            {
-                Title =     "Validation Error",
-                StatusCode = HttpStatusCode.BadRequest,
-                Details=    validationException.Message
-            };
-
-            if (validationException.Errors != null && validationException.Errors.Any())
-            {
-                error.Entries = new List<ErrorEntry>();
-
-                error.Entries.AddRange(validationException.Errors.Select(validationError =>
-                    new ErrorEntry
-                    {
-                        Code = validationError.ErrorCode,
-                        Title = validationError.ErrorMessage,
-                        Source = validationError.PropertyName
-                    }));
-            }
-
+            var error = HandleUnhandledExceptions(exception);
+           
             return error;
         }
 
