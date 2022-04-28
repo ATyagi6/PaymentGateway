@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/PaymentGatewayDemo.API/Properties/ServiceDependencies/PaymentGatewayDemoAPI - Web Deploy1/profile.arm.json
+/PaymentGatewayDemo.API/Properties/ServiceDependencies/PaymentGatewayDemoAPI - Web Deploy1/profile.arm.json
+/PaymentGatewayDemo.API/Properties/ServiceDependencies/PaymentGatewayDemoAPI - Web Deploy1/profile.arm.json

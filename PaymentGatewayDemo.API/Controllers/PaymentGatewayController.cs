@@ -52,7 +52,7 @@ namespace PaymentGatewayDemo.API.Controllers
                     
                 var token = await _mediator.Send(authenticationCommand);
 
-                if (token is null) Unauthorized(new ErrorResponse { StatusCode = HttpStatusCode.Unauthorized, Title = "Unautorized", Details = $"Not able to Authorised the Merchant with the given clientid {request.ClientId}." });
+                if (token is null) return Unauthorized(new ErrorResponse { StatusCode = HttpStatusCode.Unauthorized, Title = "Unautorized", Details = $"Not able to Authorised the Merchant with the given clientid {request.ClientId}." });
 
                 var result = _mapper.TokensToAuthenticationResponse(token);
 
